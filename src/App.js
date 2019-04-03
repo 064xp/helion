@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import firebase from './Firebase';
 import './App.css';
-
 import InputField from './components/layout/InputField';
-
 
 var db = firebase.firestore();
 
@@ -36,7 +34,8 @@ class App extends Component {
 
           <div key={index}>
             <h1>{floater.author}</h1>
-            <p>{floater.content}</p>
+            <p style={{marginBottom: '0'}}>{floater.content}</p>
+            <small style={{margin: '0', fontSize: '.8em', color: '#797979'}}>{floater.date}</small>
           </div>
         )}
         <InputField />

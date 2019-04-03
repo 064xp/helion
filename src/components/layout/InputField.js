@@ -3,6 +3,7 @@ import firebase from '../../Firebase';
 
 import './inputField.css';
 import sendIcon from '../../img/paper-plane-solid.svg';
+import * as hf from '../helperFunctions';
 
 // TODO:
 // Style form, make responsive
@@ -22,13 +23,20 @@ class Input extends React.Component {
     const newFloater = {
       author: author.value,
       content: content.value,
-      date: Date.now(),
+      time: Date.now(),
+      date: hf.getDate()
     }
 
     //validation
     if(newFloater.author === ''){
       newFloater.author = 'Anonymous';
+    };
+    if(newFloater.content === ''){
+      //send notification
+      alert('You must write something!');
+      return;
     }
+
     //send to db
     this.addFloater(newFloater);
 
@@ -52,7 +60,7 @@ class Input extends React.Component {
       <form action="#" onSubmit={this.onSubmit.bind(this)} id="idea-form">
         <h2>Share your thoughts with the world...</h2>
         <input type="text" id="form-author" placeholder="Who are you?"/>
-        <textarea type="text" id="form-content" placeholder="Share your thoughts..." rows="6" required />
+        <textarea type="text" id="form-content" placeholder="Share your thoughts..." rows="6" />
 
         <button className="btn-submit" type="submit"><img src={sendIcon} alt="send"/></button>
       </form>
