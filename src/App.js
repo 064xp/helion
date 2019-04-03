@@ -32,8 +32,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        {floaters.map(floater =>
-          <div>
+        {floaters.map((floater, index) =>
+
+          <div key={index}>
             <h1>{floater.author}</h1>
             <p>{floater.content}</p>
           </div>
