@@ -12,8 +12,6 @@ import * as hf from "../helperFunctions";
 
 class Input extends React.Component {
   onSubmit = e => {
-    e.preventDefault();
-
     //get the input fields from the form
     const author = document.querySelector("#form-author"),
       content = document.querySelector("#form-content");
