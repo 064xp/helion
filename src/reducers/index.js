@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
+import floaterReducer from './floaterReducer';
 
 export default combineReducers({
-  placeholder: null
+  floater: floaterReducer
 });
