@@ -1,3 +1,57 @@
 .floater-img {
   height: 120px;
+  position: absolute;
+  opacity: 0;
+}
+
+.fire {
+  transition: opacity 1s ease-out;
+}
+
+.capsule-enter {
+  animation: capsuleEnter 2s ease-out;
+}
+
+.bobbing {
+  animation: bobbing 4s ease-in-out infinite !important;
+}
+
+.delay-0 {
+}
+
+.delay-1 {
+  animation-delay: 0.4s !important;
+}
+
+.delay-2 {
+  animation-delay: 0.8s !important;
+}
+
+.delay-3 {
+  animation-delay: 0.11s !important;
+}
+
+.delay-4 {
+  animation-delay: 0.14s !important;
+}
+
+@keyframes capsuleEnter {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes bobbing {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
