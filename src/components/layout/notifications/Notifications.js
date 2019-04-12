@@ -34,6 +34,12 @@ class Notifications extends React.Component {
   }
 }
 
+Notifications.propTypes = {
+  notifications: PropTypes.array,
+  addNotification: PropTypes.func.isRequired,
+  removeNotification: PropTypes.func.isRequired
+};
+
 const mapStateToProps = state => {
   return {
     notifications: state.notification.notifications

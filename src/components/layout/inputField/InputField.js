@@ -1,14 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { postFloater } from "../../actions/floaterActions";
+import { postFloater } from "../../../actions/floaterActions";
 
 import "./inputField.css";
-import sendIcon from "../../img/paper-plane-solid.svg";
-import * as hf from "../helperFunctions";
+import sendIcon from "../../../img/icons/paper-plane-solid.svg";
+import * as hf from "../../helperFunctions";
 
 // TODO:
 // Style form, make responsive
-// Add submit functionality
 
 class Input extends React.Component {
   onSubmit = e => {
@@ -41,22 +40,31 @@ class Input extends React.Component {
     content.value = "";
   };
 
+  hideForm = () => {
+    document.querySelector("#idea-form").classList.toggle("idea-form_hide");
+  };
+
   render() {
     return (
-      <form action="#" onSubmit={this.onSubmit.bind(this)} id="idea-form">
-        <h2>Share your thoughts with the world...</h2>
-        <input type="text" id="form-author" placeholder="Who are you?" />
-        <textarea
-          type="text"
-          id="form-content"
-          placeholder="Share your thoughts..."
-          rows="6"
-        />
-
-        <button className="btn-submit" type="submit">
-          <img src={sendIcon} alt="send" />
+      <div id="idea-form" className="idea-form_hide">
+        <button onClick={this.hideForm} id="idea-form_btn-close">
+          X
         </button>
-      </form>
+        <form action="#" onSubmit={this.onSubmit.bind(this)}>
+          <h2>Share your thoughts with the universe...</h2>
+          <input type="text" id="form-author" placeholder="Who are you?" />
+          <textarea
+            type="text"
+            id="form-content"
+            placeholder="Share your thoughts..."
+            rows="6"
+          />
+
+          <button className="idea-form_btn-submit" type="submit">
+            <img src={sendIcon} alt="send" />
+          </button>
+        </form>
+      </div>
     );
   }
 }

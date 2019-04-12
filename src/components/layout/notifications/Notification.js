@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import uuid from "uuid";
 
 class Notification extends React.Component {
   componentDidMount() {
@@ -29,5 +28,10 @@ class Notification extends React.Component {
     );
   }
 }
+
+Notification.propTypes = {
+  notification: PropTypes.object,
+  removeNotification: PropTypes.func.isRequired
+};
 
 export default Notification;

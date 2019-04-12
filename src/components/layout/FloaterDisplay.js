@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getFloaters } from "../../actions/floaterActions";
+import Floater from "../floaters/Floater";
 
 class Display extends React.Component {
   componentDidMount() {
@@ -12,6 +13,8 @@ class Display extends React.Component {
 
     return (
       <div>
+        <Floater />
+        {/*}
         {floaters.length !== 0 ? (
           floaters.map((floater, index) => (
             <div key={index}>
@@ -26,7 +29,7 @@ class Display extends React.Component {
           ))
         ) : (
           <h1>loading...</h1>
-        )}
+        )} {*/}
       </div>
     );
   }

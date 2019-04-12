@@ -1,27 +1,39 @@
-#idea-form{
-  position: absolute;
+#idea-form {
+  position: fixed;
   bottom: 0;
   right: 0;
-  border: 2px solid black;
   width: 500px;
-  padding: 20px;
+  padding: 0;
   text-align: right;
+  margin: 0;
+  transition: transform 250ms ease-in-out;
 }
 
-#idea-form h2{
+#idea-form form {
+  border-radius: 3px;
+  padding: 20px;
+  background: white;
+}
+#idea-form_btn-close {
+  position: absolute;
+  left: 5px;
+  top: -35px;
+}
+
+#idea-form h2 {
   text-align: left;
   font-weight: normal;
   margin: 0 0 25px 0;
 }
 
-#idea-form input, #idea-form textarea{
-  /* height: 30px; */
+#idea-form input,
+#idea-form textarea {
   width: 100%;
   display: block;
   background: #d7d7d7;
   border: 0;
   border-radius: 3px;
-  color:#141414;
+  color: #141414;
   margin: 15px 0;
   padding: 8px;
   font-size: 20px;
@@ -29,7 +41,7 @@
   resize: none;
 }
 
-.btn-submit{
+.idea-form_btn-submit {
   width: 50px;
   height: 50px;
   background: #255179;
@@ -38,13 +50,17 @@
   border: 0;
 }
 
-.btn-submit:hover{
+.idea-form_btn-submit:hover {
   background: #0e3b63;
 }
 
-.btn-submit img{
+.idea-form_btn-submit img {
   position: relative;
   left: -2px;
   top: 2px;
   width: 60%;
+}
+
+.idea-form_hide {
+  transform: translateY(100%);
 }
