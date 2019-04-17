@@ -1,38 +1,40 @@
-### Seaside
+### Helion :rocket:
 
-Share your thoughts, ideas and feelings with the world and have them float away into the sea of ideas to land on a stranger's shore.
+Send your thoughts and ideas away on a capsule to traverse the universe and arrive upon a stranger.
+#### #breakInterGalacticBoundaries :milky_way:
 
-[See what its all about](https://github.com/064xp/seaside)
+
+[See what its all about](https://github.com/064xp/helion)
 
 This app is made with React, Redux and Firebase Firestore as a backend/database.
 
-#### Run Locally
+#### :computer: Run Locally
 
 In a terminal run:
 
 ***To clone git repo***
 
-```git clone https://github.com/064xp/seaside/```
+```git clone https://github.com/064xp/helion/```
 
-```cd seaside```
+```cd helion```
 
 ***Install node modules***
 
-```npm i```
+```npm install```
 
 
 ***To start development server***
 
 ```npm start```
 
-
+#### 🔥 Firebase Config
 
 A `firebaseConfig.js` file in the root of your project is required where you firebase configuration is exported
 
 ```javascript
 //firebaseConfig.js
 
-var config = {
+const config = {
     apiKey: "<API_KEY>",
     authDomain: "<PROJECT_ID>.firebaseapp.com",
     databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
@@ -44,4 +46,3 @@ var config = {
 
 export default config;
 ```
-
