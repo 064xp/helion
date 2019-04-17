@@ -25,7 +25,7 @@ class Notifications extends React.Component {
         ))}
         <button
           onClick={this.test}
-          style={{ position: "absolute", top: "50px", right: "30px" }}
+          style={{ position: "absolute", top: "40px", right: "30px" }}
         >
           Send test notification
         </button>

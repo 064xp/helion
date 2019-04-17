@@ -22,7 +22,7 @@ class Display extends React.Component {
                 randomNumFromInterval(0, floaterPositions.length - 1)
               ][index];
 
-            return <Floater message={floater} index={index} position={pos} />;
+            return <Floater key={index} message={floater} index={index} position={pos} />;
           })
         ) : (
           <h1>loading...</h1>

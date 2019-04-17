@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { capsule } from "../../img/floaters/capsule_fire";
 import "./floater.css";
+import MessagePreview from './MessagePreview';
 
 class Floater extends React.Component {
   componentDidMount() {
@@ -16,28 +17,33 @@ class Floater extends React.Component {
     //animation end listener to stop the enter animation
     //and start the bobbing animation
     floater.addEventListener("animationend", () => {
-      const fire = floater.childNodes[1].childNodes[0].childNodes[0];
+      const fire = floater.childNodes[1].childNodes[1].childNodes[0].childNodes[0];
       floater.classList.remove("capsule-enter");
+      floater.classList.remove(`delay-${this.props.index}`);
       floater.classList.add("bobbing");
       fire.style.opacity = "0";
     });
   }
 
   render() {
-    const { index, position } = this.props;
+    const { index, position, message } = this.props;
     return (
-      <div>
+      <div id={`capsule-${index}`} className={`floater-capsule capsule-enter delay-${index}`} style={{...position}}>
+        <MessagePreview message={message} />
         <svg
-          className={`capsule-enter floater-img delay-${index}`}
-          style={{ ...position }}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 819.2 799.3"
           dangerouslySetInnerHTML={{ __html: capsule }}
-          id={`capsule-${index}`}
         />
       </div>
     );
   }
+}
+
+Floater.propTypes = {
+  index: PropTypes.number.isRequired,
+  position: PropTypes.object.isRequired,
+  message: PropTypes.object.isRequired
 }
 
 export default Floater;
