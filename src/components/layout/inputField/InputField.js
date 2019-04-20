@@ -52,7 +52,12 @@ class Input extends React.Component {
         </button>
         <form action="#" onSubmit={this.onSubmit.bind(this)}>
           <h2>Share your thoughts with the universe...</h2>
-          <input type="text" id="form-author" placeholder="Who are you?" />
+          <input
+            type="text"
+            id="form-author"
+            placeholder="Who are you?"
+            autoComplete="off"
+          />
           <textarea
             type="text"
             id="form-content"

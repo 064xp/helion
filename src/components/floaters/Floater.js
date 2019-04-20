@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { capsule } from "../../img/floaters/capsule_fire";
 import "./floater.css";
-import MessagePreview from './MessagePreview';
+import MessagePreview from "./MessagePreview";
 
 class Floater extends React.Component {
   componentDidMount() {
@@ -17,7 +17,8 @@ class Floater extends React.Component {
     //animation end listener to stop the enter animation
     //and start the bobbing animation
     floater.addEventListener("animationend", () => {
-      const fire = floater.childNodes[1].childNodes[1].childNodes[0].childNodes[0];
+      const fire =
+        floater.childNodes[1].childNodes[1].childNodes[0].childNodes[0];
       floater.classList.remove("capsule-enter");
       floater.classList.remove(`delay-${this.props.index}`);
       floater.classList.add("bobbing");
@@ -26,9 +27,14 @@ class Floater extends React.Component {
   }
 
   render() {
-    const { index, position, message } = this.props;
+    const { index, position, message, selectFloater } = this.props;
     return (
-      <div id={`capsule-${index}`} className={`floater-capsule capsule-enter delay-${index}`} style={{...position}}>
+      <div
+        id={`capsule-${index}`}
+        className={`floater-capsule capsule-enter delay-${index}`}
+        style={{ ...position }}
+        onClick={selectFloater.bind(this, message)}
+      >
         <MessagePreview message={message} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +49,8 @@ class Floater extends React.Component {
 Floater.propTypes = {
   index: PropTypes.number.isRequired,
   position: PropTypes.object.isRequired,
-  message: PropTypes.object.isRequired
-}
+  message: PropTypes.object.isRequired,
+  selectFloater: PropTypes.func.isRequired
+};
 
 export default Floater;

@@ -1,5 +1,6 @@
 const initialState = {
-  floaters: []
+  floaters: [],
+  selectedFloater: null
 };
 
 export default function(state = initialState, action) {
@@ -12,6 +13,11 @@ export default function(state = initialState, action) {
     case "POST_FLOATER":
       return {
         ...state
+      };
+    case "SELECT_FLOATER":
+      return {
+        ...state,
+        selectedFloater: action.payload
       };
     default:
       return state;

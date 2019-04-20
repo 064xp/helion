@@ -7,6 +7,7 @@ import Notifications from "./components/layout/notifications/Notifications.js";
 import "./App.css";
 import InputField from "./components/layout/inputField/InputField";
 import FloaterDisplay from "./components/layout/FloaterDisplay";
+import ControlPanel from "./components/layout/controlPanel/ControlPanel";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Background />
           <Notifications />
           <FloaterDisplay />
+          <ControlPanel />
           <InputField />
         </div>
       </Provider>

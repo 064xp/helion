@@ -26,3 +26,10 @@ export const postFloater = newFloater => async dispatch => {
     payload: fetched
   });
 };
+
+export const selectFloater = floater => {
+  return {
+    type: "SELECT_FLOATER",
+    payload: floater
+  };
+};

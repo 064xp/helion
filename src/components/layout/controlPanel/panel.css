@@ -1,0 +1,75 @@
+.control-panel {
+  position: absolute;
+  bottom: 0;
+  height: 75vh;
+  min-height: 500px;
+  width: 45vw;
+  border: 7px solid #12102b;
+  background: #252347;
+  border-radius: 3px;
+  color: #f6f6f6;
+  display: flex;
+  z-index: 3;
+  transform: translateX(-100%);
+  transition: transform 300ms ease-in-out;
+}
+
+.control-panel_show {
+  transform: translateX(0);
+}
+
+.control-panel_flap {
+  height: 200px;
+  width: 20px;
+  border: 7px solid #12102b;
+  background: #252347;
+  border-radius: 3px;
+  position: absolute;
+  right: -34px;
+  bottom: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.control-panel_flap::before {
+  content: "";
+  height: 80%;
+  width: 3px;
+  background: #4e4a9d;
+  position: absolute;
+  border-radius: 2px;
+  left: 60%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.control-panel_flap::after {
+  content: "";
+  height: 50%;
+  width: 3px;
+  background: #4e4a9d;
+  position: absolute;
+  border-radius: 2px;
+  left: 30%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.control-panel_user-info {
+  border-right: 7px solid #12102b;
+  padding: 20px 0 0 0;
+  width: 200px;
+  text-align: center;
+}
+
+.control-panel_user-image {
+  height: 100px;
+  width: 100px;
+  background: #989898;
+  border-radius: 3px;
+  margin: auto;
+}
+
+.control-panel_selected-message {
+  padding: 8px;
+}

@@ -9,7 +9,7 @@ let floatersRef = db.collection("floaters");
 //firebase call functions
 export const fetchFloaters = async () => {
   let newFloaters = [];
-  const fetched = await floatersRef.get();
+  const fetched = await floatersRef.limit(5).get();
 
   fetched.forEach(doc => {
     //call the data() function on the documents returned to retrieve the data
