@@ -4,7 +4,7 @@ import rootReducer from './reducers/index';
 
 const initialState = {};
 
-const devTools =  window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : null;
+const devTools =  window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : x => x;
 
 const store  = createStore(
   rootReducer,
