@@ -58,8 +58,9 @@
 .control-panel_user-info {
   border-right: 7px solid #12102b;
   padding: 20px 0 0 0;
-  width: 200px;
+  width: 30%;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .control-panel_user-image {
@@ -72,4 +73,15 @@
 
 .control-panel_selected-message {
   padding: 8px;
+  width: 70%;
+  box-sizing: border-box;
+}
+
+
+.control-panel_no-message {
+  color: #12102b;
+  font-size: 40px;
+  width: 100%;
+  text-align: center;
+  margin-top: 15%;
 }

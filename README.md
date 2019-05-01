@@ -27,7 +27,7 @@ In a terminal run:
 
 ```npm start```
 
-#### 🔥 Firebase Config
+## Firebase Config
 
 A `firebaseConfig.js` file in the root of your project is required where you firebase configuration is exported
 
