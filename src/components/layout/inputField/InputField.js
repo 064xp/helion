@@ -4,24 +4,37 @@ import { postFloater } from "../../../actions/floaterActions";
 
 import "./inputField.css";
 import sendIcon from "../../../img/icons/paper-plane-solid.svg";
-import * as hf from "../../helperFunctions";
+import * as hf from "../../../helperFunctions";
 
 // TODO:
 // Style form, make responsive
 
 class Input extends React.Component {
+  state = {
+    author: "",
+    content: ""
+  };
+
+  onChangeHandler = e => {
+    this.setState({
+      ...this.state,
+      [e.target.name]: e.target.value
+    });
+  };
+
   onSubmit = e => {
-    //get the input fields from the form
-    const author = document.querySelector("#form-author"),
-      content = document.querySelector("#form-content");
+    e.preventDefault();
 
     //put the values from the fields into a new object
     const newFloater = {
-      author: author.value,
-      content: content.value,
+      author: this.state.author,
+      content: this.state.content,
       time: Date.now(),
-      date: hf.getDate()
+      date: hf.getDate(),
+      random: hf.randomNumFromInterval(0, 2147483647)
     };
+
+    console.log(newFloater);
 
     //validation
     if (newFloater.author === "") {
@@ -36,8 +49,7 @@ class Input extends React.Component {
     this.props.postFloater(newFloater);
 
     //clear the form
-    author.value = "";
-    content.value = "";
+    this.setState({ author: "", content: "" });
   };
 
   hideForm = () => {
@@ -45,6 +57,7 @@ class Input extends React.Component {
   };
 
   render() {
+    const { author, content } = this.state;
     return (
       <div id="idea-form" className="idea-form_hide">
         <button onClick={this.hideForm} id="idea-form_btn-close">
@@ -57,12 +70,18 @@ class Input extends React.Component {
             id="form-author"
             placeholder="Who are you?"
             autoComplete="off"
+            name="author"
+            value={author}
+            onChange={this.onChangeHandler.bind(this)}
           />
           <textarea
             type="text"
             id="form-content"
             placeholder="Share your thoughts..."
             rows="6"
+            name="content"
+            value={content}
+            onChange={this.onChangeHandler.bind(this)}
           />
 
           <button className="idea-form_btn-submit" type="submit">

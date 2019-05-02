@@ -1,7 +1,14 @@
-import { fetchFloaters, addFloater } from "../Firebase";
+import { fetchNewFloaters, fetchRandomFloaters, addFloater } from "../Firebase";
 
-export const getFloaters = () => async dispatch => {
-  const fetched = await fetchFloaters();
+export const getFloaters = sortBy => async dispatch => {
+  let fetched = null;
+
+  if (sortBy === "new") {
+    fetched = await fetchNewFloaters();
+  } else if (sortBy === "random") {
+    fetched = await fetchRandomFloaters();
+  }
+
   dispatch({
     type: "GET_FLOATERS",
     payload: fetched
@@ -11,19 +18,10 @@ export const getFloaters = () => async dispatch => {
 export const postFloater = newFloater => async dispatch => {
   addFloater(newFloater);
 
-  //fetch floaters again
-  const fetched = await fetchFloaters();
-
   //placeholder until more functionality is needed
   dispatch({
     type: "POST_FLOATER",
     payload: newFloater
-  });
-
-  //update state with new fetched floaters
-  dispatch({
-    type: "GET_FLOATERS",
-    payload: fetched
   });
 };
 
