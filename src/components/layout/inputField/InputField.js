@@ -30,8 +30,7 @@ class Input extends React.Component {
       author: this.state.author,
       content: this.state.content,
       time: Date.now(),
-      date: hf.getDate(),
-      random: hf.randomNumFromInterval(0, 2147483647)
+      date: hf.getDate()
     };
 
     console.log(newFloater);

@@ -1,14 +1,12 @@
 import firebase from "firebase";
 import "firebase/firestore";
 import config from "./firebaseConfig";
-import { getRandomUniqueNums } from "./helperFunctions";
+import { randomNumFromInterval, getUniqueRandomNums } from "./helperFunctions";
 
 firebase.initializeApp(config);
 export const db = firebase.firestore();
 const floatersRef = db.collection("floaters");
-const counterRef = db.collection("stats");
 
-//fetch floaters sorted by newest
 export const fetchNewFloaters = async () => {
   let newFloaters = [];
   const fetched = await floatersRef
@@ -21,16 +19,28 @@ export const fetchNewFloaters = async () => {
     newFloaters.push(doc.data());
   });
 
-  fetchRandomFloaters();
-
   return newFloaters;
 };
 
-//fetch random floaters
 export const fetchRandomFloaters = async () => {
-  let counter = await counterRef.doc("counter").get();
-  counter = counter.data().messageCount;
-  // const ammountOfFloaters = 5;
+  let fetchedFloaters = [];
+  const ammountOfFloaters = 5; //ammount of messsages we want to fetch
+  let fetched = null;
+
+  //get an array of unique random numbers from 0 to 2,147,483,647 (max 32 bit int, kind of arbitrary)
+  const random = randomNumFromInterval(0, 2147483647);
+  fetched = await floatersRef
+    .where("random", "<=", random)
+    .orderBy("random")
+    .limit(ammountOfFloaters)
+    .get();
+
+  fetched.forEach(fetch => {
+    fetchedFloaters.push(fetch.data());
+    console.log(fetch.data());
+  });
+
+  return fetchedFloaters;
 };
 
 //post a new floater to the DB
