@@ -1,12 +1,12 @@
-import { fetchNewFloaters, fetchRandomFloaters, addFloater } from "../Firebase";
+import { fetchNewFloaters, addFloater } from "../Firebase";
 
 export const getFloaters = sortBy => async dispatch => {
   let fetched = null;
 
   if (sortBy === "new") {
     fetched = await fetchNewFloaters();
-  } else if (sortBy === "random") {
-    fetched = await fetchRandomFloaters();
+  } else if (sortBy === "old") {
+    //...
   }
 
   dispatch({

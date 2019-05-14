@@ -1,7 +1,7 @@
 import firebase from "firebase";
 import "firebase/firestore";
 import config from "./firebaseConfig";
-import { randomNumFromInterval, getUniqueRandomNums } from "./helperFunctions";
+import { randomNumFromInterval } from "./helperFunctions";
 
 firebase.initializeApp(config);
 export const db = firebase.firestore();
@@ -20,27 +20,6 @@ export const fetchNewFloaters = async () => {
   });
 
   return newFloaters;
-};
-
-export const fetchRandomFloaters = async () => {
-  let fetchedFloaters = [];
-  const ammountOfFloaters = 5; //ammount of messsages we want to fetch
-  let fetched = null;
-
-  //get an array of unique random numbers from 0 to 2,147,483,647 (max 32 bit int, kind of arbitrary)
-  const random = randomNumFromInterval(0, 2147483647);
-  fetched = await floatersRef
-    .where("random", "<=", random)
-    .orderBy("random")
-    .limit(ammountOfFloaters)
-    .get();
-
-  fetched.forEach(fetch => {
-    fetchedFloaters.push(fetch.data());
-    console.log(fetch.data());
-  });
-
-  return fetchedFloaters;
 };
 
 //post a new floater to the DB

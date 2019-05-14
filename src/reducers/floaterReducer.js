@@ -1,6 +1,7 @@
 const initialState = {
   floaters: [],
-  selectedFloater: null
+  selectedFloater: null,
+  counter: null
 };
 
 export default function(state = initialState, action) {

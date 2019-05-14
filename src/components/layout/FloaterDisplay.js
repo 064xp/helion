@@ -7,7 +7,7 @@ import { floaterPositions } from "../floaters/floaterPositions";
 import { randomNumFromInterval } from "../../helperFunctions";
 
 class Display extends React.Component {
-  componentDidMount() {
+  async componentDidMount() {
     this.props.getFloaters(this.props.sortBy);
   }
 

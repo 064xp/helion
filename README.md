@@ -48,18 +48,14 @@ export default config;
 ### Firebase Firestore Structure
 
 ```
-floaters
-    └── [docId]
-        ├── author
-        │     └── "064xp"
-        ├── content
-        │     └── "Hello world"
-        ├── date
-        │     └── "Apr 30  2019"
-        ├── random
-        │     └── [random 32 bit int]
-        └── time
-              └── "1556682311385"
-
-
+── floaters
+   └── [docId]
+       ├── author
+       │   └── "064xp"
+       ├── content
+       │   └── "Hello world"
+       ├── date
+       │   └── "Apr 30  2019"
+       └── time
+           └── "1556682311385"
 ```
