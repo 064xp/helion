@@ -23,12 +23,6 @@ class Notifications extends React.Component {
             key={index}
           />
         ))}
-        <button
-          onClick={this.test}
-          style={{ position: "absolute", top: "40px", right: "30px" }}
-        >
-          Send test notification
-        </button>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 const initialState = {
   isMobile: false,
-  sortBy: "new"
+  sortBy: "Newest"
 };
 
 export default function(state = initialState, action) {

@@ -7,8 +7,18 @@ import { floaterPositions } from "../floaters/floaterPositions";
 import { randomNumFromInterval } from "../../helperFunctions";
 
 class Display extends React.Component {
-  async componentDidMount() {
+  componentDidMount() {
     this.props.getFloaters(this.props.sortBy);
+  }
+
+  componentDidUpdate(prevProps) {
+    const prevSortBy = prevProps.sortBy.toUpperCase();
+    const nextSortBy = this.props.sortBy.toUpperCase();
+
+    //if sorting was changed by the user, re-fetch floaters
+    if (prevSortBy !== nextSortBy) {
+      this.props.getFloaters(this.props.sortBy);
+    }
   }
 
   render() {

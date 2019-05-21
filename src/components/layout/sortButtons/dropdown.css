@@ -1,0 +1,52 @@
+.sort-buttons_buttons {
+  background: white;
+  border: 0;
+  height: 30px;
+  display: block;
+  font-size: 1.3em;
+  min-width: 90px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+.sort-buttons_buttons:nth-child(1) {
+  position: relative;
+  z-index: 3;
+  background: #e9e9e9;
+}
+
+.sort-buttons_options {
+  position: relative;
+  margin-top: 10px;
+  transition: transform 130ms ease-in, opacity 100ms ease-out;
+  transform: translateY(-120%);
+  z-index: 1;
+  opacity: 0;
+}
+
+.sort-buttons_buttons:hover {
+  background: #d7d7d7;
+}
+
+.sort-buttons_button-container {
+  margin: 20px 0 0 30px;
+  width: min-content;
+  height: 30px;
+}
+
+.sort-buttons_active {
+  background: #d7d7d7;
+}
+
+.sort-buttons_show-hovered {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+}
+
+.sort-buttons_show-hovered-container {
+  height: auto;
+}
+
+.sort-buttons_hidden {
+  display: none;
+}

@@ -1,18 +1,26 @@
 import firebase from "firebase";
 import "firebase/firestore";
 import config from "./firebaseConfig";
-import { randomNumFromInterval } from "./helperFunctions";
 
 firebase.initializeApp(config);
 export const db = firebase.firestore();
 const floatersRef = db.collection("floaters");
 
-export const fetchNewFloaters = async () => {
+export const fetchFloaters = async sortBy => {
   let newFloaters = [];
-  const fetched = await floatersRef
-    .orderBy("time")
-    .limit(5)
-    .get();
+  let fetched = null;
+
+  if (sortBy === "Newest") {
+    fetched = await floatersRef
+      .orderBy("time", "desc")
+      .limit(5)
+      .get();
+  } else if (sortBy === "Oldest") {
+    fetched = await floatersRef
+      .orderBy("time")
+      .limit(5)
+      .get();
+  }
 
   fetched.forEach(doc => {
     //call the data() function on the documents returned to retrieve the data
