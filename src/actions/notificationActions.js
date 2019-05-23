@@ -1,8 +1,9 @@
 import uuid from "uuid";
 
-export const addNotification = notificationText => {
+export const addNotification = (notificationText, color = "sucess") => {
   const newNotification = {
     text: notificationText,
+    color: color,
     id: `notification-${uuid().slice(0, 5)}`
   };
 

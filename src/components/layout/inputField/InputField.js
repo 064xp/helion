@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { postFloater } from "../../../actions/floaterActions";
+import { addNotification } from "../../../actions/notificationActions";
 
 import "./inputField.css";
 import sendIcon from "../../../img/icons/paper-plane-solid.svg";
-import * as hf from "../../../helperFunctions";
 
 // TODO:
 // Style form, make responsive
@@ -28,19 +28,15 @@ class Input extends React.Component {
     //put the values from the fields into a new object
     const newFloater = {
       author: this.state.author,
-      content: this.state.content,
-      time: Date.now(),
-      date: hf.getDate()
+      content: this.state.content
     };
-
-    console.log(newFloater);
 
     //validation
     if (newFloater.author === "") {
       newFloater.author = "Anonymous";
     }
     if (newFloater.content === "") {
-      alert("You must write something!");
+      this.props.addNotification("You must write something!", "warning");
       return;
     }
 
@@ -94,5 +90,5 @@ class Input extends React.Component {
 
 export default connect(
   null,
-  { postFloater }
+  { postFloater, addNotification }
 )(Input);

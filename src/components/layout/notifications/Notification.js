@@ -18,12 +18,10 @@ class Notification extends React.Component {
   }
 
   render() {
-    const { text, id } = this.props.notification;
+    const { text, color, id } = this.props.notification;
     return (
-      <div id={id} className="notification-text" ref={this.notificationRef}>
-        <p>
-          {text} === notificaton id: {id}
-        </p>
+      <div id={id} className={`notification-text notification-color-${color}`}>
+        <p>{text}</p>
       </div>
     );
   }

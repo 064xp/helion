@@ -9,10 +9,6 @@ import {
 } from "../../../actions/notificationActions";
 
 class Notifications extends React.Component {
-  test = () => {
-    this.props.addNotification("test");
-  };
-
   render() {
     return (
       <div id="notifications-top-container">

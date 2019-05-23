@@ -1,6 +1,8 @@
 import firebase from "firebase";
 import "firebase/firestore";
 import config from "./firebaseConfig";
+import store from "./store";
+import { addNotification } from "./actions/notificationActions";
 
 firebase.initializeApp(config);
 export const db = firebase.firestore();
@@ -35,9 +37,13 @@ export const addFloater = newFloater => {
   floatersRef
     .add(newFloater)
     .then(() => {
-      alert("message sent!");
+      store.dispatch(addNotification("Message Sent"));
     })
     .catch(err => {
-      alert("Something ocurred while sending message, please try again later");
+      store.dispatch(
+        addNotification(
+          "An error ocurred while sending message, please try again later"
+        )
+      );
     });
 };

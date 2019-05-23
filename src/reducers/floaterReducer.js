@@ -11,10 +11,6 @@ export default function(state = initialState, action) {
         ...state,
         floaters: action.payload
       };
-    case "POST_FLOATER":
-      return {
-        ...state
-      };
     case "SELECT_FLOATER":
       return {
         ...state,

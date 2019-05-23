@@ -7,12 +7,24 @@ admin.initializeApp({
 
 var db = admin.firestore();
 
-var counterRef = db.collection("stats");
-
 //on create
 exports.onMessageSubmit = functions.firestore
   .document("floaters/{floaterId}")
   .onCreate((snap, context) => {
-    //sanitize
-    //add current time and date from server
+    const newMessage = snap.data();
+    const docRef = admin
+      .firestore()
+      .doc(`/floaters/${context.params.floaterId}`);
+
+    console.log(context.params.floaterId);
+
+    return docRef.set({ time: Date.now(), date: getDate() }, { merge: true });
   });
+
+//Return date in format Apr 02 2019
+const getDate = () => {
+  const date = new Date();
+  const output = date.toDateString().slice(4);
+
+  return output;
+};
