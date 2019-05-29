@@ -1,7 +1,8 @@
 const initialState = {
   floaters: [],
   selectedFloater: null,
-  counter: null
+  firstVisible: null,
+  lastVisible: null
 };
 
 export default function(state = initialState, action) {
@@ -15,6 +16,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         selectedFloater: action.payload
+      };
+    case "SET_FIRST_AND_LAST_VISIBLE":
+      return {
+        ...state,
+        firstVisible: action.payload.firstVisible,
+        lastVisible: action.payload.lastVisible
       };
     default:
       return state;

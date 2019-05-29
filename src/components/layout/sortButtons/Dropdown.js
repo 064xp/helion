@@ -79,6 +79,7 @@ class Dropdown extends React.Component {
                 {
                   "sort-buttons_show-hovered": this.state.dropdownHovered
                 },
+                //eslint-disable-next-line
                 { "sort-buttons_hidden": this.state.selectedIndex == index }
               )}
               data-index={index}

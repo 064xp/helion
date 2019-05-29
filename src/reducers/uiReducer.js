@@ -1,6 +1,7 @@
 const initialState = {
   isMobile: false,
-  sortBy: "Newest"
+  sortBy: "Newest",
+  currentPage: 1
 };
 
 export default function(state = initialState, action) {
@@ -14,6 +15,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         sortBy: action.payload
+      };
+    case "SET_CURRENT_PAGE":
+      return {
+        ...state,
+        currentPage: action.payload
       };
     default:
       return state;

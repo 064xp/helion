@@ -24,6 +24,7 @@ class ControlPanel extends React.Component {
         selectedFloater: nextProps.selectedFloater
       };
     }
+    return null;
   }
 
   togglePanel = () => {

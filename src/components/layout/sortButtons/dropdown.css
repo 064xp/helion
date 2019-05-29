@@ -29,9 +29,9 @@
 }
 
 .sort-buttons_button-container {
-  margin: 20px 0 0 30px;
   width: min-content;
   height: 30px;
+  float: left;
 }
 
 .sort-buttons_active {

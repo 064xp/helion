@@ -5,13 +5,14 @@ export const floaterPositions = [
       top: "20%",
       left: "7%"
     },
-    {
-      top: "42%",
-      left: "47%"
-    },
+
     {
       top: "60%",
       left: "23%"
+    },
+    {
+      top: "42%",
+      left: "47%"
     },
     {
       top: "12%",

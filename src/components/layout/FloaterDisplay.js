@@ -54,7 +54,8 @@ class Display extends React.Component {
 const mapStateToProps = state => ({
   floaters: state.floater.floaters,
   sortBy: state.ui.sortBy,
-  isMobile: state.ui.isMobile
+  isMobile: state.ui.isMobile,
+  lastVisible: state.floater.lastVisible
 });
 
 Display.propTypes = {
@@ -62,7 +63,8 @@ Display.propTypes = {
   sortBy: PropTypes.string.isRequired,
   isMobile: PropTypes.bool.isRequired,
   getFloaters: PropTypes.func.isRequired,
-  selectFloater: PropTypes.func.isRequired
+  selectFloater: PropTypes.func.isRequired,
+  lastVisible: PropTypes.number
 };
 
 export default connect(

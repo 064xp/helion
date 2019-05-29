@@ -1,0 +1,6 @@
+.sort-buttons_container {
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  padding: 20px;
+}

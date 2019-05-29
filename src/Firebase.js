@@ -1,34 +1,33 @@
 import firebase from "firebase";
 import "firebase/firestore";
 import config from "./firebaseConfig";
-import store from "./store";
-import { addNotification } from "./actions/notificationActions";
+import {
+  makeQuery,
+  dispatchFirstAndLast,
+  getDocData,
+  sendNotification
+} from "./helperFunctions";
 
 firebase.initializeApp(config);
 export const db = firebase.firestore();
 const floatersRef = db.collection("floaters");
 
-export const fetchFloaters = async sortBy => {
+//fetch new messages
+export const fetchFloaters = async (sortBy, startAfter) => {
   let newFloaters = [];
+  let query = null;
   let fetched = null;
 
-  if (sortBy === "Newest") {
-    fetched = await floatersRef
-      .orderBy("time", "desc")
-      .limit(5)
-      .get();
-  } else if (sortBy === "Oldest") {
-    fetched = await floatersRef
-      .orderBy("time")
-      .limit(5)
-      .get();
-  }
+  //construct query from parameters
+  query = makeQuery(sortBy, startAfter, floatersRef);
+  //fetch from db
+  fetched = await query.get();
+  //get the data from fetched documents (array)
+  newFloaters = getDocData(fetched);
+  //set first and last visible in the store for use in pagination
+  dispatchFirstAndLast(newFloaters);
 
-  fetched.forEach(doc => {
-    //call the data() function on the documents returned to retrieve the data
-    newFloaters.push(doc.data());
-  });
-
+  //return newFloater Array
   return newFloaters;
 };
 
@@ -37,13 +36,12 @@ export const addFloater = newFloater => {
   floatersRef
     .add(newFloater)
     .then(() => {
-      store.dispatch(addNotification("Message Sent"));
+      sendNotification("Message Sent!");
     })
     .catch(err => {
-      store.dispatch(
-        addNotification(
-          "An error ocurred while sending message, please try again later"
-        )
+      sendNotification(
+        "An error ocurred while sending message, please try again later",
+        "warning"
       );
     });
 };

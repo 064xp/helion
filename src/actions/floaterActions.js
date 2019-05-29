@@ -1,7 +1,15 @@
 import { fetchFloaters, addFloater } from "../Firebase";
 
-export const getFloaters = sortBy => async dispatch => {
-  let fetched = await fetchFloaters(sortBy);
+export const getFloaters = (
+  sortBy,
+  startAfter,
+  reverse = false
+) => async dispatch => {
+  let fetched = await fetchFloaters(sortBy, startAfter);
+
+  if (reverse) {
+    fetched = fetched.reverse();
+  }
 
   dispatch({
     type: "GET_FLOATERS",
@@ -19,5 +27,12 @@ export const selectFloater = floater => {
   return {
     type: "SELECT_FLOATER",
     payload: floater
+  };
+};
+
+export const setFirstAndLastVisible = firstAndLast => {
+  return {
+    type: "SET_FIRST_AND_LAST_VISIBLE",
+    payload: firstAndLast
   };
 };
