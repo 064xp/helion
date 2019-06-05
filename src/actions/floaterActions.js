@@ -1,14 +1,24 @@
 import { fetchFloaters, addFloater } from "../Firebase";
+import { dispatchFirstAndLast } from "../helperFunctions";
 
 export const getFloaters = (
   sortBy,
   startAfter,
-  reverse = false
+  reverseArrayBeforeDispatch
 ) => async dispatch => {
   let fetched = await fetchFloaters(sortBy, startAfter);
 
-  if (reverse) {
+  if (reverseArrayBeforeDispatch) {
     fetched = fetched.reverse();
+  }
+
+  //set first and last visible in the store for use in pagination
+  try {
+    dispatchFirstAndLast(fetched);
+  } catch {
+    //if it fails, could be network error, or no more messages in the DB
+    //return and prevent from dispatching nothing
+    return;
   }
 
   dispatch({

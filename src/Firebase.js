@@ -1,12 +1,7 @@
 import firebase from "firebase";
 import "firebase/firestore";
 import config from "./firebaseConfig";
-import {
-  makeQuery,
-  dispatchFirstAndLast,
-  getDocData,
-  sendNotification
-} from "./helperFunctions";
+import { makeQuery, getDocData, sendNotification } from "./helperFunctions";
 
 firebase.initializeApp(config);
 export const db = firebase.firestore();
@@ -22,10 +17,16 @@ export const fetchFloaters = async (sortBy, startAfter) => {
   query = makeQuery(sortBy, startAfter, floatersRef);
   //fetch from db
   fetched = await query.get();
+
   //get the data from fetched documents (array)
   newFloaters = getDocData(fetched);
+
+  //if there are no more floaters in the db, return null
+  if (newFloaters.length === 0) {
+    return null;
+  }
   //set first and last visible in the store for use in pagination
-  dispatchFirstAndLast(newFloaters);
+  // dispatchFirstAndLast(fetched);
 
   //return newFloater Array
   return newFloaters;

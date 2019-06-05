@@ -3,52 +3,70 @@ import PropTypes from "prop-types";
 import Dropdown from "./Dropdown";
 import ArrowButtons from "./ArrowButtons";
 import { connect } from "react-redux";
-import { setSortBy, setCurrentPage } from "../../../actions/uiActions";
+import { setSortBy } from "../../../actions/uiActions";
 import { getFloaters } from "../../../actions/floaterActions";
 import "./style.css";
 
 class SortButtons extends React.Component {
-  onDropdownChange = item => {
-    this.props.setSortBy(item);
+  state = {
+    currentPage: 1,
+    queuedPageChange: null
+  };
+
+  componentDidUpdate(prevProps) {
+    if (this.props.firstVisible !== prevProps.firstVisible) {
+      this.changePage(this.state.queuedPageChange);
+    }
+  }
+
+  onDropdownChange = option => {
+    this.props.setSortBy(option);
   };
 
   onArrowClick = buttonClicked => {
-    const {
-      currentPage,
-      getFloaters,
-      setCurrentPage,
-      sortBy,
-      lastVisible,
-      firstVisible
-    } = this.props;
+    const { getFloaters, sortBy, lastVisible, firstVisible } = this.props;
+    const { currentPage } = this.state;
 
     switch (buttonClicked) {
       case "PREVIOUS":
         if (currentPage === 1) {
           return;
         }
-
-        //get the opposite of the 'sort by' value
         // prettier-ignore
         const oppositeSortBy = sortBy.toUpperCase() === "NEWEST" ? "OLDEST" : "NEWEST";
-
-        //fetch floaters, sort by the opposite of current value
-        //start after first visible floater
-        //reverse the array after fetching and before dispatching
+        //fetch floaters, sort by the opposite of current value; start after first visible floater; reverse the array after fetching and before dispatching
         getFloaters(oppositeSortBy, firstVisible, true);
-        //decrement page counter
-        setCurrentPage(currentPage - 1);
+        //queue a previous page change
+        this.queuePageChange(buttonClicked);
         break;
 
       case "NEXT":
-        //fetch floaters, start after last visible floater
-        getFloaters(sortBy, lastVisible);
-        //increment page counter
-        setCurrentPage(currentPage + 1);
+        getFloaters(sortBy, lastVisible, false);
+        //queue a next page change
+        this.queuePageChange(buttonClicked);
         break;
       default:
         return;
     }
+  };
+
+  queuePageChange(operation) {
+    this.setState({
+      ...this.state,
+      queuedPageChange: operation
+    });
+  }
+
+  changePage = operation => {
+    if (operation === null) {
+      return;
+    }
+
+    const { currentPage } = this.state;
+    this.setState({
+      ...this.state,
+      currentPage: operation === "NEXT" ? currentPage + 1 : currentPage - 1
+    });
   };
 
   render() {
@@ -59,7 +77,7 @@ class SortButtons extends React.Component {
           onChange={this.onDropdownChange}
         />
         <ArrowButtons
-          currentPage={this.props.currentPage}
+          currentPage={this.state.currentPage}
           onArrowClick={this.onArrowClick}
         />
       </div>
@@ -70,16 +88,12 @@ class SortButtons extends React.Component {
 SortButtons.propTypes = {
   setSortBy: PropTypes.func.isRequired,
   getFloaters: PropTypes.func.isRequired,
-  setCurrentPage: PropTypes.func.isRequired,
-  currentPage: PropTypes.number.isRequired,
   firstVisible: PropTypes.number,
   lastVisible: PropTypes.number,
   sortBy: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
-  floaters: state.floater.floaters,
-  currentPage: state.ui.currentPage,
   firstVisible: state.floater.firstVisible,
   lastVisible: state.floater.lastVisible,
   sortBy: state.ui.sortBy
@@ -87,5 +101,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setSortBy, getFloaters, setCurrentPage }
+  { setSortBy, getFloaters }
 )(SortButtons);

@@ -49,11 +49,14 @@ export const getDocData = documents => {
   return docsData;
 };
 
-export const dispatchFirstAndLast = docArray => {
-  //set first and last visible for pagination (storing the 'time' value of each document)
+export const dispatchFirstAndLast = floaterArray => {
+  const firstVisible = floaterArray[0].time;
+  const lastVisible = floaterArray[floaterArray.length - 1].time;
+
   const firstAndLast = {
-    firstVisible: docArray[0].time,
-    lastVisible: docArray[docArray.length - 1].time
+    firstVisible: firstVisible,
+    lastVisible: lastVisible
   };
+
   store.dispatch(setFirstAndLastVisible(firstAndLast));
 };

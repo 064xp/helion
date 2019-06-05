@@ -23,6 +23,7 @@ export default function(state = initialState, action) {
         firstVisible: action.payload.firstVisible,
         lastVisible: action.payload.lastVisible
       };
+
     default:
       return state;
   } //end of switch

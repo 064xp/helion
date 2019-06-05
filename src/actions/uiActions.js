@@ -10,10 +10,3 @@ export const setSortBy = filter => {
     payload: filter
   };
 };
-
-export const setCurrentPage = currentPage => {
-  return {
-    type: "SET_CURRENT_PAGE",
-    payload: currentPage
-  };
-};
