@@ -18,6 +18,61 @@
   transform: translateX(0);
 }
 
+@media only screen and (max-width: 1030px) {
+  .control-panel {
+    width: 75vw;
+  }
+
+  .control-panel_selected-message_btn-close p {
+    opacity: 1 !important;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  .control-panel {
+    width: calc(100% - 15px);
+  }
+  .control-panel_user-info {
+    width: 40% !important;
+  }
+  .control-panel_user-image {
+    height: 70px !important;
+    width: 70px !important;
+  }
+}
+
+.btn-circle-close {
+  width: 18px;
+  height: 18px;
+  background: #f25056;
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-circle-close:hover p {
+  opacity: 1;
+}
+
+.btn-circle-close p {
+  font-weight: 900;
+  margin-top: -3px;
+  color: #93363a;
+  opacity: 0;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.btn-circle-close:active {
+  background: #bd3c41;
+}
+
+.control-panel_selected-message_btn-close {
+  position: absolute;
+  right: 8px;
+}
+
 .control-panel_flap {
   height: 200px;
   width: 20px;
@@ -71,12 +126,17 @@
   margin: auto;
 }
 
+.control-panel_user-info h3 {
+  font-size: 5vw;
+  margin: 20px 5px;
+  font-size: calc(14px + 7 * ((100vw - 320px) / 680));
+}
+
 .control-panel_selected-message {
   padding: 8px;
   width: 70%;
   box-sizing: border-box;
 }
-
 
 .control-panel_no-message {
   color: #12102b;

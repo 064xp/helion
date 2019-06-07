@@ -5,6 +5,10 @@ import "./floater.css";
 import MessagePreview from "./MessagePreview";
 
 class Floater extends React.Component {
+  state = {
+    showPreview: false
+  };
+
   componentDidMount() {
     const floater = document.querySelector(`#capsule-${this.props.index}`);
 
@@ -17,8 +21,8 @@ class Floater extends React.Component {
     //animation end listener to stop the enter animation
     //and start the bobbing animation
     floater.addEventListener("animationend", () => {
-      const fire =
-        floater.childNodes[1].childNodes[1].childNodes[0].childNodes[0];
+      //prettier-ignore
+      const fire = floater.childNodes[1].childNodes[1].childNodes[0].childNodes[0];
       floater.classList.remove("capsule-enter");
       floater.classList.remove(`delay-${this.props.index}`);
       floater.classList.add("bobbing");
@@ -26,17 +30,51 @@ class Floater extends React.Component {
     });
   }
 
+  toggleMessagePreview = hovering => {
+    this.setState({
+      ...this.state,
+      showPreview: hovering ? true : false
+    });
+  };
+
+  onMobileClick = () => {
+    //if the preview is already being shown and the user taps again, select floater and open in panel
+    if (this.state.showPreview) {
+      this.props.selectFloater(this.props.message);
+      this.setState({
+        ...this.state,
+        showPreview: false
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        showPreview: true
+      });
+    }
+  };
+
   render() {
-    const { index, position, message, selectFloater } = this.props;
+    const { index, position, message, selectFloater, isMobile } = this.props;
     return (
       <div
         id={`capsule-${index}`}
         className={`floater-capsule capsule-enter delay-${index}`}
-        style={{ ...position }}
-        onClick={selectFloater.bind(this, message)}
+        style={{ ...position.capsule }}
       >
-        <MessagePreview message={message} />
+        <MessagePreview
+          show={this.state.showPreview}
+          message={message}
+          isMobile={isMobile}
+          style={position.preview}
+        />
         <svg
+          onClick={
+            isMobile ? this.onMobileClick : selectFloater.bind(this, message)
+          }
+          onMouseEnter={
+            isMobile ? null : this.toggleMessagePreview.bind(this, true)
+          }
+          onMouseLeave={this.toggleMessagePreview.bind(this, false)}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 819.2 799.3"
           dangerouslySetInnerHTML={{ __html: capsule }}
@@ -50,7 +88,8 @@ Floater.propTypes = {
   index: PropTypes.number.isRequired,
   position: PropTypes.object.isRequired,
   message: PropTypes.object.isRequired,
-  selectFloater: PropTypes.func.isRequired
+  selectFloater: PropTypes.func.isRequired,
+  isMobile: PropTypes.bool.isRequired
 };
 
 export default Floater;

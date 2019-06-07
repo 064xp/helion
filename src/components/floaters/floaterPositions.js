@@ -1,26 +1,86 @@
 //an array of arrays filled with positions
-export const floaterPositions = [
-  [
+export const floaterPositions = {
+  desktop: [
     {
-      top: "20%",
-      left: "7%"
+      capsule: {
+        top: "3%",
+        left: "7%"
+      }
     },
+    {
+      capsule: {
+        top: "50%",
+        left: "18%",
+        zIndex: "3"
+      }
+    },
+    {
+      capsule: {
+        top: "25%",
+        left: "45%",
+        zIndex: "2"
+      }
+    },
+    {
+      capsule: {
+        top: "20px",
+        right: "22%"
+      }
+    },
+    {
+      capsule: {
+        top: "52%",
+        right: "17%"
+      }
+    }
+  ],
 
+  mobile: [
     {
-      top: "60%",
-      left: "23%"
+      capsule: {
+        left: "7%",
+        zIndex: "3"
+      },
+      preview: {
+        top: "46px",
+        right: "-94px"
+      }
     },
     {
-      top: "42%",
-      left: "47%"
+      capsule: {
+        bottom: "18%",
+        left: "13%",
+        zIndex: "3"
+      }
     },
     {
-      top: "12%",
-      right: "22%"
+      capsule: {
+        top: "28%",
+        left: "36%",
+        zIndex: "2"
+      }
     },
     {
-      top: "52%",
-      right: "17%"
+      capsule: {
+        top: "5%",
+        right: "10%",
+        zIndex: "1"
+      },
+      preview: {
+        top: "-2px",
+        right: "67px"
+      }
+    },
+    {
+      capsule: {
+        bottom: "10%",
+        right: "10%",
+        zIndex: "4"
+      },
+      preview: {
+        top: "-5px",
+        right: "19px"
+      }
     }
   ]
-];
+};

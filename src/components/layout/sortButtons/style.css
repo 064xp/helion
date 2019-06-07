@@ -2,5 +2,9 @@
   display: flex;
   justify-content: space-between;
   height: 70px;
+  width: 100%;
   padding: 20px;
+  position: absolute;
+  z-index: 3;
+  box-sizing: border-box;
 }

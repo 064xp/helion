@@ -46,7 +46,10 @@ class ControlPanel extends React.Component {
           onClick={this.togglePanel.bind(this)}
         />
         <InfoNav />
-        <SelectedMessage message={this.state.selectedFloater} />
+        <SelectedMessage
+          closePanel={this.togglePanel}
+          message={this.state.selectedFloater}
+        />
       </div>
     );
   }

@@ -6,6 +6,22 @@ export const randomNumFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
+export const debounce = (func, wait, immediate) => {
+  let timeout;
+  return function() {
+    let context = this,
+      args = arguments;
+    let later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    let callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
+
 export const sendNotification = (notification, color) => {
   //dispatch a notification from outside of a react component
   store.dispatch(addNotification(notification, color));

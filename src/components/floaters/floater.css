@@ -1,3 +1,12 @@
+.floater-display {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+}
+
 .floater-capsule {
   width: 11vw;
   min-width: 110px;
@@ -17,17 +26,15 @@
   position: relative;
   top: -5px;
   right: -60px;
-  opacity: 0;
   transition: opacity 250ms ease-in;
   min-width: 120px;
-}
-
-.floater-capsule:hover > :nth-child(1) {
-  opacity: 1;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .preview-show {
   opacity: 1;
+  visibility: visible;
 }
 
 .floater_message-preview h4,
@@ -47,10 +54,24 @@ p {
   color: #303030;
 }
 
+.floater_message-preview-mobile-instruction {
+  font-size: 0.5em;
+  color: #ababab;
+  text-align: center;
+  margin: 5px 0 0 0;
+}
+
 .floater_message-preview-date {
   font-size: 0.7em;
   color: #5d5d5d;
   margin: 5px 0 0 0;
+}
+
+@media only screen and (max-width: 550px) {
+  .floater_message-preview {
+    top: -5px;
+    right: -30px;
+  }
 }
 
 .capsule-enter {

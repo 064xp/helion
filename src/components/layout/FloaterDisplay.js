@@ -4,11 +4,18 @@ import { connect } from "react-redux";
 import { getFloaters, selectFloater } from "../../actions/floaterActions";
 import Floater from "../floaters/Floater";
 import { floaterPositions } from "../floaters/floaterPositions";
-import { randomNumFromInterval } from "../../helperFunctions";
+import { debounce } from "../../helperFunctions";
 
 class Display extends React.Component {
+  state = {
+    isMobile: null
+  };
+
   componentDidMount() {
     this.props.getFloaters(this.props.sortBy);
+    this.checkIfMobile();
+
+    window.addEventListener("resize", debounce(this.checkIfMobile, 200));
   }
 
   componentDidUpdate(prevProps) {
@@ -21,17 +28,31 @@ class Display extends React.Component {
     }
   }
 
+  checkIfMobile = () => {
+    if (window.innerWidth <= 550) {
+      this.setState({
+        ...this.state,
+        isMobile: true
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        isMobile: false
+      });
+    }
+  };
+
   render() {
     const { floaters, selectFloater } = this.props;
 
     return (
-      <div>
+      <div className="floater-display">
         {floaters.length !== 0 ? (
           floaters.map((floater, index) => {
             let pos =
-              floaterPositions[
-                randomNumFromInterval(0, floaterPositions.length - 1)
-              ][index];
+              floaterPositions[this.state.isMobile ? "mobile" : "desktop"][
+                index
+              ];
 
             return (
               <Floater
@@ -40,6 +61,7 @@ class Display extends React.Component {
                 index={index}
                 selectFloater={selectFloater}
                 position={pos}
+                isMobile={this.state.isMobile}
               />
             );
           })
