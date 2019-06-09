@@ -3,22 +3,74 @@
   bottom: 0;
   right: 0;
   width: 500px;
-  padding: 0;
+  padding: 25px 10px 10px 10px;
   text-align: right;
-  margin: 0;
   transition: transform 250ms ease-in-out;
-  z-index: 4;
-}
-
-#idea-form form {
+  z-index: 6;
   border-radius: 3px;
-  padding: 20px;
   background: white;
 }
+
 #idea-form_btn-close {
   position: absolute;
   left: 5px;
   top: -35px;
+}
+
+.idea-form_btn-open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  height: 70px;
+  width: 70px;
+  border-radius: 99px;
+  position: absolute;
+  bottom: 40px;
+  right: 70px;
+  z-index: 4;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #542a4e;
+  transition: transform 250ms ease-out;
+}
+
+.idea-form_btn-open svg {
+  height: 58%;
+}
+
+.idea-form_btn-open:hover {
+  background: #dedede;
+  transform: rotate(360deg);
+}
+
+.idea-form_btn-open:active {
+  transform: scale(0.9);
+}
+
+@media only screen and (max-width: 930px) {
+  #idea-form {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    box-sizing: border-box;
+    text-align: right;
+  }
+
+  #idea-form_btn-close {
+    position: absolute;
+    left: 5px;
+    top: -35px;
+  }
+  .idea-form_btn-open {
+    height: 60px;
+    width: 60px;
+    bottom: 5vh;
+    right: 8vw;
+  }
 }
 
 #idea-form h2 {

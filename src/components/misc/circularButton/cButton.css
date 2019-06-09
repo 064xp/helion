@@ -1,0 +1,50 @@
+.btn-circle-close {
+  width: 18px;
+  height: 18px;
+  background: #f25056;
+  border-radius: 999px;
+  cursor: pointer;
+  border: none;
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  text-align: center;
+}
+
+.btn-circle-close::after,
+.btn-circle-close::before {
+  content: "";
+  width: 60%;
+  height: 2px;
+  background: #93363a;
+  position: absolute;
+  opacity: 0;
+}
+
+.btn-circle-close::before {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.btn-circle-close::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.btn-circle-close:hover::before,
+.btn-circle-close:hover::after {
+  opacity: 1;
+}
+
+.btn-circle-close:active {
+  background: #bd3c41;
+}
+
+@media only screen and (max-width: 1030px) {
+  .btn-circle-close::after,
+  .btn-circle-close::before {
+    opacity: 1 !important;
+  }
+  .btn-circle-close {
+    width: 20px;
+    height: 20px;
+  }
+}

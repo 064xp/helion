@@ -9,7 +9,7 @@
   border-radius: 3px;
   color: #f6f6f6;
   display: flex;
-  z-index: 3;
+  z-index: 5;
   transform: translateX(-100%);
   transition: transform 300ms ease-in-out;
 }
@@ -39,38 +39,6 @@
     height: 70px !important;
     width: 70px !important;
   }
-}
-
-.btn-circle-close {
-  width: 18px;
-  height: 18px;
-  background: #f25056;
-  border-radius: 999px;
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.btn-circle-close:hover p {
-  opacity: 1;
-}
-
-.btn-circle-close p {
-  font-weight: 900;
-  margin-top: -3px;
-  color: #93363a;
-  opacity: 0;
-  user-select: none;
-  -webkit-touch-callout: none;
-}
-
-.btn-circle-close:active {
-  background: #bd3c41;
-}
-
-.control-panel_selected-message_btn-close {
-  position: absolute;
-  right: 8px;
 }
 
 .control-panel_flap {

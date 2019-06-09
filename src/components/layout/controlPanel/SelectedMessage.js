@@ -1,16 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import CircularButton from "../../misc/circularButton/CircularButton";
 
 const SelectedMessage = props => {
   const { message, closePanel } = props;
   return (
     <div className="control-panel_selected-message">
-      <div
-        className="btn-circle-close control-panel_selected-message_btn-close"
-        onClick={closePanel}
-      >
-        <p>x</p>
-      </div>
+      <CircularButton onClick={closePanel} />
       {message ? (
         <div>
           <h2>{message.author}</h2>
