@@ -46,15 +46,25 @@ class Dropdown extends React.Component {
     });
   };
 
+  topItemClick = () => {
+    if (this.props.isMobile) {
+      this.setState({
+        dropdownHovered: !this.state.dropdownHovered
+      });
+    }
+  };
+
   render() {
-    const { items } = this.props;
+    const { items, isMobile } = this.props;
     return (
       <div
         className={classNames("sort-buttons_button-container", {
           "sort-buttons_show-hovered-container": this.state.dropdownHovered
         })}
-        onMouseOver={this.onSortOver}
-        onMouseLeave={this.onSortLeave}
+        onMouseOver={isMobile ? null : this.onSortOver}
+        onMouseLeave={isMobile ? null : this.onSortLeave}
+        onClick={this.topItemClick}
+        onBlur={this.state.dropdownHovered ? this.topItemClick : null}
       >
         <button className="sort-buttons_buttons">
           {items[this.state.selectedIndex]}{" "}

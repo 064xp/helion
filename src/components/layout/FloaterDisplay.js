@@ -2,15 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getFloaters, selectFloater } from "../../actions/floaterActions";
+import { setIsMobile } from "../../actions/uiActions";
 import Floater from "../floaters/Floater";
 import { floaterPositions } from "../floaters/floaterPositions";
 import { debounce } from "../../helperFunctions";
 
 class Display extends React.Component {
-  state = {
-    isMobile: null
-  };
-
   componentDidMount() {
     this.props.getFloaters(this.props.sortBy);
     this.checkIfMobile();
@@ -28,31 +25,28 @@ class Display extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    window.removeEventListener("resize", debounce(this.checkIfMobile, 200));
+  }
+
   checkIfMobile = () => {
+    const { setIsMobile } = this.props;
+
     if (window.innerWidth <= 550) {
-      this.setState({
-        ...this.state,
-        isMobile: true
-      });
+      setIsMobile(true);
     } else {
-      this.setState({
-        ...this.state,
-        isMobile: false
-      });
+      setIsMobile(false);
     }
   };
 
   render() {
-    const { floaters, selectFloater } = this.props;
+    const { floaters, selectFloater, isMobile } = this.props;
 
     return (
       <div className="floater-display">
         {floaters.length !== 0 ? (
           floaters.map((floater, index) => {
-            let pos =
-              floaterPositions[this.state.isMobile ? "mobile" : "desktop"][
-                index
-              ];
+            let pos = floaterPositions[isMobile ? "mobile" : "desktop"][index];
 
             return (
               <Floater
@@ -61,7 +55,7 @@ class Display extends React.Component {
                 index={index}
                 selectFloater={selectFloater}
                 position={pos}
-                isMobile={this.state.isMobile}
+                isMobile={isMobile}
               />
             );
           })
@@ -84,6 +78,7 @@ Display.propTypes = {
   floaters: PropTypes.array,
   sortBy: PropTypes.string.isRequired,
   isMobile: PropTypes.bool.isRequired,
+  setIsMobile: PropTypes.func.isRequired,
   getFloaters: PropTypes.func.isRequired,
   selectFloater: PropTypes.func.isRequired,
   lastVisible: PropTypes.number
@@ -91,5 +86,5 @@ Display.propTypes = {
 
 export default connect(
   mapStateToProps,
-  { getFloaters, selectFloater }
+  { getFloaters, selectFloater, setIsMobile }
 )(Display);

@@ -16,11 +16,18 @@ class SortButtons extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.firstVisible !== prevProps.firstVisible) {
       this.changePage(this.state.queuedPageChange);
+      //clear the queued operation
+      this.setState({
+        queuedPageChange: null
+      });
     }
   }
 
   onDropdownChange = option => {
     this.props.setSortBy(option);
+    this.setState({
+      currentPage: 1
+    });
   };
 
   onArrowClick = buttonClicked => {
@@ -75,6 +82,7 @@ class SortButtons extends React.Component {
         <Dropdown
           items={["Newest", "Oldest"]}
           onChange={this.onDropdownChange}
+          isMobile={this.props.isMobile}
         />
         <ArrowButtons
           currentPage={this.state.currentPage}
@@ -90,13 +98,15 @@ SortButtons.propTypes = {
   getFloaters: PropTypes.func.isRequired,
   firstVisible: PropTypes.number,
   lastVisible: PropTypes.number,
-  sortBy: PropTypes.string.isRequired
+  sortBy: PropTypes.string.isRequired,
+  isMobile: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
   firstVisible: state.floater.firstVisible,
   lastVisible: state.floater.lastVisible,
-  sortBy: state.ui.sortBy
+  sortBy: state.ui.sortBy,
+  isMobile: state.ui.isMobile
 });
 
 export default connect(

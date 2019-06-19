@@ -9,8 +9,15 @@ const SelectedMessage = props => {
       <CircularButton onClick={closePanel} />
       {message ? (
         <div>
-          <h2>{message.author}</h2>
-          <p>{message.content}</p>
+          <h2 className="control-panel_selected-message_message-author">
+            {message.author}
+          </h2>
+          <p className="control-panel_selected-message_message-date">
+            {message.date}
+          </p>
+          <p className="control-panel_selected-message_message-content">
+            {message.content}
+          </p>
         </div>
       ) : (
         <div className="control-panel_no-message"> No message selected...</div>

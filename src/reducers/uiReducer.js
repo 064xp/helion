@@ -5,10 +5,10 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case "SET_MOBILE":
+    case "SET_IS_MOBILE":
       return {
         ...state,
-        isMobile: true
+        isMobile: action.payload
       };
     case "SORT_BY":
       return {

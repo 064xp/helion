@@ -1,6 +1,7 @@
-export const setMobile = () => {
+export const setIsMobile = isMobile => {
   return {
-    type: "SET_MOBILE"
+    type: "SET_IS_MOBILE",
+    payload: isMobile
   };
 };
 
