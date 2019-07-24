@@ -3,12 +3,9 @@ import { connect } from "react-redux";
 import { postFloater } from "../../../actions/floaterActions";
 import { addNotification } from "../../../actions/notificationActions";
 import CircularButton from "../../misc/circularButton/CircularButton";
-
 import "./inputField.css";
 import sendIcon from "../../../img/icons/paper-plane-solid.svg";
-
-// TODO:
-// Style form, make responsive
+import axios from "axios";
 
 class Input extends React.Component {
   state = {
@@ -23,13 +20,18 @@ class Input extends React.Component {
     });
   };
 
-  onSubmit = e => {
+  async onSubmit(e) {
     e.preventDefault();
+
+    const currentTime = await axios.get(
+      "https://worldtimeapi.org/api/timezone/Etc/GMT"
+    );
 
     //put the values from the fields into a new object
     const newFloater = {
       author: this.state.author,
-      content: this.state.content
+      content: this.state.content,
+      time: currentTime.data.unixtime
     };
 
     //validation
@@ -46,7 +48,7 @@ class Input extends React.Component {
 
     //clear the form
     this.setState({ author: "", content: "" });
-  };
+  }
 
   toggleForm = () => {
     document.querySelector("#idea-form").classList.toggle("idea-form_hide");

@@ -27,6 +27,10 @@ export const sendNotification = (notification, color) => {
   store.dispatch(addNotification(notification, color));
 };
 
+export const convertUnixToDate = unixTime => {
+  return new Date(unixTime * 1000);
+};
+
 /* Firebase Helper Functions */
 
 export const makeQuery = (sortBy, startAfter, docRef) => {

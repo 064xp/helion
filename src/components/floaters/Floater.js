@@ -37,6 +37,17 @@ class Floater extends React.Component {
     });
   };
 
+  onClick() {
+    if (this.props.isMobile) {
+      this.onMobileClick();
+      return;
+    }
+
+    this.props.selectFloater({
+      ...this.props.message
+    });
+  }
+
   onMobileClick = () => {
     //if the preview is already being shown and the user taps again, select floater and open in panel
     if (this.state.showPreview) {
@@ -54,7 +65,7 @@ class Floater extends React.Component {
   };
 
   render() {
-    const { index, position, message, selectFloater, isMobile } = this.props;
+    const { index, position, message, isMobile } = this.props;
     return (
       <div
         id={`capsule-${index}`}
@@ -68,9 +79,7 @@ class Floater extends React.Component {
           style={position.preview}
         />
         <svg
-          onClick={
-            isMobile ? this.onMobileClick : selectFloater.bind(this, message)
-          }
+          onClick={this.onClick.bind(this)}
           onMouseEnter={
             isMobile ? null : this.toggleMessagePreview.bind(this, true)
           }

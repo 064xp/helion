@@ -5,7 +5,7 @@ import { getFloaters, selectFloater } from "../../actions/floaterActions";
 import { setIsMobile } from "../../actions/uiActions";
 import Floater from "../floaters/Floater";
 import { floaterPositions } from "../floaters/floaterPositions";
-import { debounce } from "../../helperFunctions";
+import { debounce, convertUnixToDate } from "../../helperFunctions";
 
 class Display extends React.Component {
   componentDidMount() {
@@ -47,11 +47,15 @@ class Display extends React.Component {
         {floaters.length !== 0 ? (
           floaters.map((floater, index) => {
             let pos = floaterPositions[isMobile ? "mobile" : "desktop"][index];
+            const messageWithDate = {
+              ...floater,
+              date: convertUnixToDate(floater.time).toDateString()
+            };
 
             return (
               <Floater
                 key={index}
-                message={floater}
+                message={messageWithDate}
                 index={index}
                 selectFloater={selectFloater}
                 position={pos}
