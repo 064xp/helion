@@ -54,8 +54,6 @@ export default config;
        │   └── "064xp"
        ├── content
        │   └── "Hello world"
-       ├── date
-       │   └── "Apr 30  2019"
        └── time
            └── "1556682311385"
 ```
