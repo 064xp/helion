@@ -37,7 +37,7 @@ export const addFloater = newFloater => {
   floatersRef
     .add(newFloater)
     .then(() => {
-      sendNotification("Message Sent!");
+      sendNotification("Message Sent!", "sucess", "MESSAGE_POST_SUCESS");
     })
     .catch(err => {
       sendNotification(

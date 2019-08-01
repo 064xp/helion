@@ -10,8 +10,11 @@
 .floater-capsule {
   width: 11vw;
   min-width: 110px;
-  opacity: 0;
   position: absolute;
+}
+
+.invisible {
+  opacity: 0;
 }
 
 .fire {

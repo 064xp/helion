@@ -13,7 +13,7 @@ class Notification extends React.Component {
       //then remove the notification
       setTimeout(() => {
         removeNotification(notification.id);
-      }, 400);
+      }, 3000);
     }, 2000);
   }
 

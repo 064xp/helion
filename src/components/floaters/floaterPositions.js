@@ -1,4 +1,4 @@
-//an array of arrays filled with positions
+//an object of arrays filled with css positions
 export const floaterPositions = {
   desktop: [
     {

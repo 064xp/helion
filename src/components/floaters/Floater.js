@@ -69,7 +69,7 @@ class Floater extends React.Component {
     return (
       <div
         id={`capsule-${index}`}
-        className={`floater-capsule capsule-enter delay-${index}`}
+        className={`floater-capsule invisible capsule-enter delay-${index}`}
         style={{ ...position.capsule }}
       >
         <MessagePreview

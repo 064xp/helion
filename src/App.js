@@ -9,6 +9,7 @@ import InputField from "./components/layout/inputField/InputField";
 import FloaterDisplay from "./components/layout/FloaterDisplay";
 import ControlPanel from "./components/layout/controlPanel/ControlPanel";
 import SortButtons from "./components/layout/sortButtons/SortButtons";
+import FloaterLaunchContainer from "./components/floaters/FloaterLaunchContainer/FloaterLaunchContainer";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
           <Background />
           <Notifications />
           <SortButtons />
+          <FloaterLaunchContainer />
           <FloaterDisplay />
           <ControlPanel />
           <InputField />

@@ -22,9 +22,9 @@ export const debounce = (func, wait, immediate) => {
   };
 };
 
-export const sendNotification = (notification, color) => {
+export const sendNotification = (notification, color, type) => {
   //dispatch a notification from outside of a react component
-  store.dispatch(addNotification(notification, color));
+  store.dispatch(addNotification(notification, color, type));
 };
 
 export const convertUnixToDate = unixTime => {

@@ -48,6 +48,8 @@ class Input extends React.Component {
 
     //clear the form
     this.setState({ author: "", content: "" });
+
+    this.toggleForm();
   }
 
   toggleForm = () => {
