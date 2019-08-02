@@ -6,6 +6,7 @@ import CircularButton from "../../misc/circularButton/CircularButton";
 import "./inputField.css";
 import sendIcon from "../../../img/icons/paper-plane-solid.svg";
 import axios from "axios";
+import uuid from 'uuid';
 
 class Input extends React.Component {
   state = {
@@ -31,7 +32,8 @@ class Input extends React.Component {
     const newFloater = {
       author: this.state.author,
       content: this.state.content,
-      time: currentTime.data.unixtime
+      time: currentTime.data.unixtime,
+      id: uuid()
     };
 
     //validation
