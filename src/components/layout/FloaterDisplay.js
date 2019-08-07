@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Floater from "../floaters/Floater";
+import LoadingSpinner from "../layout/loadingSpinner/Spinner";
 import { connect } from "react-redux";
 import { getFloaters, selectFloater } from "../../actions/floaterActions";
 import { setIsMobile } from "../../actions/uiActions";
-import Floater from "../floaters/Floater";
 import { floaterPositions } from "../floaters/floaterPositions";
 import { debounce, convertUnixToDate } from "../../helperFunctions";
 
@@ -64,7 +65,7 @@ class Display extends React.Component {
             );
           })
         ) : (
-          <h1>loading...</h1>
+          <LoadingSpinner />
         )}
       </div>
     );
