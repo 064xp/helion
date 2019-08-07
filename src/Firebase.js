@@ -32,6 +32,15 @@ export const fetchFloaters = async (sortBy, startAfter) => {
   return newFloaters;
 };
 
+export const getFloaterById = id => {
+  return floatersRef
+    .where("id", "==", id)
+    .get()
+    .then(snap => {
+      return getDocData(snap)[0];
+    });
+};
+
 //post a new floater to the DB
 export const addFloater = newFloater => {
   floatersRef
