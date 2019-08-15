@@ -8,7 +8,7 @@ const SelectedMessage = props => {
     <div className="control-panel_selected-message">
       <CircularButton onClick={closePanel} />
       {message ? (
-        <div>
+        <React.Fragment>
           <h2 className="control-panel_selected-message_message-author">
             {message.author}
           </h2>
@@ -18,7 +18,7 @@ const SelectedMessage = props => {
           <p className="control-panel_selected-message_message-content">
             {message.content}
           </p>
-        </div>
+        </React.Fragment>
       ) : (
         <div className="control-panel_no-message"> No message selected...</div>
       )}
