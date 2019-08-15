@@ -6,7 +6,7 @@ import "./style.css";
 const handleAnimEnd = e => {
   const fire = e.target.childNodes[0].childNodes[1].childNodes[0].childNodes[0];
   e.target.classList.remove("capsule-enter");
-  e.target.classList.add("bobbing");
+  // e.target.classList.add("bobbing");
   e.target.childNodes[1].classList.add("width-fade-in");
   fire.style.opacity = 0;
 };
@@ -33,8 +33,8 @@ const IndividualCapsule = props => {
         />
         <div className="individual-capsule_message">
           <h4 className="individual-capsule_message-author">{author}</h4>
-          <p className="individual-capsule_message-content">{content}</p>
           <p className="individual-capsule_message-date">{date}</p>
+          <p className="individual-capsule_message-content">{content}</p>
         </div>
       </div>
     </div>
