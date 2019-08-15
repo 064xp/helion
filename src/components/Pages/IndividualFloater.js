@@ -10,6 +10,7 @@ import IndividualCapsule from "../floaters/individualCapsule/IndividualCapsule";
 const IndividualFloater = props => {
   const { id } = props.match.params;
   const dispatch = useDispatch();
+
   getFloaterById(id).then(fetched => {
     let fetchedWithDate = {
       ...fetched,

@@ -1,3 +1,52 @@
-h3 {
-  color: white;
+.individual-capsule_container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.individual-capsule {
+  display: flex;
+  max-width: 83vw;
+}
+
+.individual-capsule svg {
+  width: 25vw;
+}
+
+.individual-capsule_message {
+  border-bottom: 0.3em solid #c8c2d1;
+  box-sizing: border-box;
+  background: #f3ecff;
+  border-radius: 5px;
+  padding: 1em 3em 1em 1em;
+  margin: 0 0 0 1em;
+  height: fit-content;
+  overflow-x: hidden;
+  width: 0;
+  opacity: 0;
+  transition: width 600ms ease-in-out, opacity 400ms ease-in 450ms;
+  white-space: nowrap;
+}
+
+.individual-capsule_message-author {
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+}
+
+.individual-capsule_message-content {
+  font-size: 1.5em;
+}
+
+.individual-capsule_message-date {
+  font-size: 0.8em;
+  color: #2d2d2d;
+  margin: 1.5em 0 0 0;
+}
+
+.width-fade-in {
+  width: 40vw;
+  opacity: 1;
 }
