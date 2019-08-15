@@ -3,7 +3,7 @@ export const floaterPositions = {
   desktop: [
     {
       capsule: {
-        top: "3%",
+        top: "10%",
         left: "7%"
       }
     },
