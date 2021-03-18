@@ -2,8 +2,6 @@
 
 Send your thoughts and ideas away on a capsule to traverse the universe and arrive upon a stranger.
 
-#### #breakInterGalacticBoundaries :milky_way:
-
 [See what its all about](https://www.helion.ga)
 
 This app is made with React, Redux and Firebase Firestore as a backend/database.
