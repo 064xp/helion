@@ -2,7 +2,7 @@
 
 Send your thoughts and ideas away on a capsule to traverse the universe and arrive upon a stranger.
 
-[See what its all about](https://www.helion.ga)
+[See what its all about](https://helion.netlify.app/)
 
 This app is made with React, Redux and Firebase Firestore as a backend/database.
 
